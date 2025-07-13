@@ -1,0 +1,27 @@
+{
+  "name": "ecommerce-product-page-luc",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "biome format --write .",
+    "lint": "biome lint --write .",
+    "check": "biome check --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.1",
+    "@types/node": "^24.0.13",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "alpinejs": "^3.14.9",
+    "liquidjs": "^10.21.1",
+    "swiper": "^11.2.10",
+    "tailwindcss": "^4.1.11"
+  }
+}
