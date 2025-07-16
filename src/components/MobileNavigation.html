@@ -1,0 +1,95 @@
+<!-- Mobile Navigation Menu Component -->
+<div  x-show="mobileMenuOpen"
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="transform -translate-x-full"
+     x-transition:enter-end="transform translate-x-0"
+     x-transition:leave="transition ease-in duration-200"
+     x-transition:leave-start="transform translate-x-0"
+     x-transition:leave-end="transform -translate-x-full"
+     class="fixed top-16 left-0 right-0 bottom-0 z-40 bg-gray-100">
+  <div class="h-full flex bg-gray-100 flex-col relative overflow-hidden">
+
+    <!-- Main Categories View -->
+    <div x-show="!showSubcategories"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="transform translate-x-full"
+         x-transition:enter-end="transform translate-x-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="transform translate-x-0"
+         x-transition:leave-end="transform translate-x-full"
+         class="absolute inset-0 bg-gray-100">
+
+      <!-- Gender Tabs -->
+      <div class="flex border-b border-gray-200">
+        <button @click="setActiveTab('men')" :class="activeTab === 'men' ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500'" class="flex-1 py-4 text-sm font-medium tracking-widest cursor-pointer">
+          MEN
+        </button>
+        <button @click="setActiveTab('women')" :class="activeTab === 'women' ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500'" class="flex-1 py-4 text-sm font-medium tracking-widest cursor-pointer">
+          WOMEN
+        </button>
+      </div>
+
+      <!-- Category Links -->
+      <div class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+        <template x-for="(categoryData, categoryName) in categories[activeTab]" :key="categoryName">
+          <button @click="selectCategory(categoryName)" class="w-full flex items-center justify-between py-4 px-2 text-gray-900 cursor-pointer">
+            <span class="text-sm font-medium tracking-widest" x-text="categoryName"></span>
+            <svg class="w-6 h-6 tracking-tight text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </template>
+      </div>
+      <hr class="border-gray-200">
+
+      <!-- User Actions -->
+      <div class="px-4 py-4 space-y-2">
+        <template x-for="(action, index) in userActions" :key="index">
+          <button class="w-full flex items-center gap-3 py-3 px-2 text-gray-900 rounded-md cursor-pointer">
+            <img :src="action.src" :alt="action.alt" class="w-6 h-6">
+            <span class="text-sm font-medium tracking-widest" x-text="action.text"></span>
+          </button>
+        </template>
+
+      </div>
+
+    </div>
+
+    <!-- Subcategories View -->
+    <div x-show="showSubcategories"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="transform translate-x-full"
+         x-transition:enter-end="transform translate-x-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="transform translate-x-0"
+         x-transition:leave-end="transform translate-x-full"
+         class="absolute inset-0 bg-gray-100">
+
+      <!-- Header with Back Button -->
+      <div class="px-4 py-4 border-b border-gray-200 flex items-center">
+        <button @click="goBackToCategories()" class="mr-4 p-2 rounded-full">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h2 class="text-sm font-semibold text-gray-900 tracking-widest" x-text="selectedCategory"></h2>
+      </div>
+
+
+
+      <!-- HR Separator -->
+      <hr class="border-gray-200">
+
+      <!-- Subcategories List -->
+      <div class="flex-1 px-4 py-6 overflow-y-auto">
+        <div class="space-y-1">
+          <template x-for="subcategory in categories[activeTab]?.[selectedCategory]?.subcategories || []" :key="subcategory">
+            <a href="#" class="block py-3 px-2 text-gray-900  rounded-md">
+              <span class="text-sm font-medium tracking-widest" x-text="subcategory"></span>
+            </a>
+          </template>
+        </div>
+      </div>
+
+  </div>
+</div>

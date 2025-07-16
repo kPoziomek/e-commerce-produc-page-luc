@@ -1,0 +1,112 @@
+{
+  "men": {
+    "BOOTS": {
+      "subcategories": [
+        "Hiking Boots",
+        "Chelsea Boots", 
+        "Work Boots",
+        "Combat Boots",
+        "Dress Boots"
+      ]
+    },
+    "SHOES": {
+      "subcategories": [
+        "Sneakers",
+        "Dress Shoes",
+        "Casual Shoes",
+        "Loafers",
+        "Oxford Shoes"
+      ]
+    },
+    "APPAREL": {
+      "subcategories": [
+        "T-Shirts",
+        "Shirts",
+        "Jeans",
+        "Jackets",
+        "Sweaters"
+      ]
+    },
+    "ACCESSORIES": {
+      "subcategories": [
+        "Belts",
+        "Watches",
+        "Wallets",
+        "Bags",
+        "Sunglasses"
+      ]
+    },
+    "LIFESTYLE": {
+      "subcategories": [
+        "Sports",
+        "Travel",
+        "Outdoor",
+        "Tech",
+        "Home"
+      ]
+    },
+    "COLLABORATIONS": {
+      "subcategories": [
+        "Limited Edition",
+        "Designer Collab",
+        "Brand Partners",
+        "Artist Series"
+      ]
+    }
+  },
+  "women": {
+    "BOOTS": {
+      "subcategories": [
+        "Ankle Boots",
+        "Knee High Boots",
+        "Chelsea Boots",
+        "Heeled Boots",
+        "Combat Boots"
+      ]
+    },
+    "SHOES": {
+      "subcategories": [
+        "Heels",
+        "Flats",
+        "Sneakers",
+        "Sandals",
+        "Pumps"
+      ]
+    },
+    "APPAREL": {
+      "subcategories": [
+        "Dresses",
+        "Tops",
+        "Jeans",
+        "Jackets",
+        "Skirts"
+      ]
+    },
+    "ACCESSORIES": {
+      "subcategories": [
+        "Handbags",
+        "Jewelry",
+        "Scarves",
+        "Belts",
+        "Sunglasses"
+      ]
+    },
+    "LIFESTYLE": {
+      "subcategories": [
+        "Wellness",
+        "Travel",
+        "Beauty",
+        "Tech",
+        "Home"
+      ]
+    },
+    "COLLABORATIONS": {
+      "subcategories": [
+        "Limited Edition",
+        "Designer Collab",
+        "Celebrity Line",
+        "Artist Series"
+      ]
+    }
+  }
+}

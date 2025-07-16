@@ -1,0 +1,32 @@
+<!-- Mobile Header Component -->
+<div class="sticky top-0 bg-white flex items-center justify-between h-16 z-50 border-b border-gray-300">
+  <!-- Mobile menu button -->
+  <button @click="toggleMobileMenu()" class="text-gray-900 hover:text-gray-600 focus:outline-none focus:text-gray-600 px-4 cursor-pointer">
+    <img x-show="!mobileMenuOpen" src="/assets/icons/menu.svg" alt="Menu" class="w-6 h-6">
+    <img x-show="mobileMenuOpen" src="/assets/icons/cross.svg" alt="Close" class="w-6 h-6">
+  </button>
+
+  <!-- Logo -->
+  <div class="absolute left-1/2 py-2.5 px-3 -translate-x-1/2">
+    <a class="header__logo" href="https://www.lucchese.com" title="Lucchese" aria-label="Go to the homepage">
+      <div class="flex z-0 w=[170px] h-[54px]">
+        <img alt="Lucchese Bootmaker Logotype" class="primary-logo transition--fade-in lazyautosizes ls-is-cached lazyloaded w=[170px]"
+             style=";" sizes="170px" src="//www.lucchese.com/cdn/shop/files/Lucchese_Bootmaker_RGB_04086_1600x.png?v=1614632364">
+      </div>
+      <noscript class="noscript">
+        <img class="primary-logo" src="//www.lucchese.com/cdn/shop/files/Lucchese_Bootmaker_RGB_04086_2000x.png?v=1614632364" alt="Lucchese Bootmaker Logotype">
+      </noscript>
+    </a>
+  </div>
+
+  <!-- Mobile Actions (right) -->
+  <div class="flex items-center space-x-3 px-4">
+    <button class="text-gray-900 hover:text-gray-600 cursor-pointer">
+      <img src="/assets/icons/search.svg" alt="Search">
+    </button>
+    <button class="text-gray-900 hover:text-gray-600 relative cursor-pointer">
+      <img src="/assets/icons/cart.svg" alt="Cart">
+      <span class="absolute -top-1 -right-1 bg-amber-900 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+    </button>
+  </div>
+</div>

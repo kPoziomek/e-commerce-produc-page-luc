@@ -1,0 +1,52 @@
+<!-- Desktop Header Component -->
+<div class="hidden lg:flex justify-between items-stretch">
+  <div class="flex flex-col items-stretch justify-between">
+    <!-- Gender Tabs -->
+    <div>
+      <div class="flex flex-wrap min-w-0 py-1.5 max-w-[1150px]">
+        <div class="flex leading-0.5 font-medium text-md text-primary border-0 border-solid border-b-gray-300 border-b text-center w-96 relative transition-all duration-300 *:cursor-pointer *:py-4 *:px-12 *:w-full">
+          <button @click="setActiveTab('men')" :class="isActiveTab('men') ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500'" class="flex-1 py-4 text-sm font-medium tracking-widest">
+            MEN
+          </button>
+          <button @click="setActiveTab('women')" :class="isActiveTab('women') ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500'" class="flex-1 py-4 text-sm font-medium tracking-widest">
+            WOMEN
+          </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex z-20 pt-3 items-start justify-between w-full">
+          <template x-for="item in navigationLinks" :key="item" class="flex space-x-6">
+            <a href="#" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-xs font-medium tracking-widest" x-text="item"></a>
+          </template>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="absolute left-1/2 py-2.5 px-3 -translate-x-1/2">
+      <a class="header__logo" href="https://www.lucchese.com" title="Lucchese" aria-label="Go to the homepage">
+        <div class="flex z-0 w=[170px] h-[54px]">
+          <img alt="Lucchese Bootmaker Logotype" class="primary-logo transition--fade-in lazyautosizes ls-is-cached lazyloaded w=[170px]"
+               style=";" sizes="170px" src="//www.lucchese.com/cdn/shop/files/Lucchese_Bootmaker_RGB_04086_1600x.png?v=1614632364">
+        </div>
+        <noscript class="noscript">
+          <img class="primary-logo" src="//www.lucchese.com/cdn/shop/files/Lucchese_Bootmaker_RGB_04086_2000x.png?v=1614632364" alt="Lucchese Bootmaker Logotype">
+        </noscript>
+      </a>
+    </div>
+  </div>
+
+  <!-- Header Actions -->
+  <div class="flex items-start space-x-4 font-medium pt-5">
+    <template x-for="(action, index) in actionHeader" :key="index">
+      <button class="text-gray-900 hover:text-gray-600  min-w-[24px]">
+        <img :src="action.src" :alt="action.alt">
+      </button>
+    </template>
+    <button class="text-gray-900 hover:text-gray-600 relative min-w-[24px]">
+      <img src="/assets/icons/cart.svg" alt="Cart">
+      <span class="absolute -top-1 -right-1 bg-amber-900 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+    </button>
+  </div>
+</div>

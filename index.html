@@ -1,16 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/style.css" rel="stylesheet">
     <title><e-commerce-product-page-luc></e-commerce-product-page-luc></title>
-  </head>
-  <body class="bg-black text-white font-sans">
+</head>
+<body class="bg-black text-primary font-sans">
+<!-- Header Navigation -->
+<header class="sticky top-0 bg-white shadow-md z-50">
+    <nav class="bg-white mx-auto px-4 sm:px-6 lg:px-8" x-data="headerComponent()">
+        <!-- Desktop Layout -->
+        <div x-html="await fetch('/src/components/DesktopHeader.html').then(r => r.text())"></div>
+    </nav>
+</header>
 
-    <div id="app">
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!-- Mobile Layout -->
+<div class="lg:hidden" x-data="mobileNavigationComponent()" x-init="init()">
+    <!-- Mobile Header -->
+    <div x-html="await fetch('/src/components/MobileHeader.html').then(r => r.text())"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <div x-html="await fetch('/src/components/MobileNavigation.html').then(r => r.text())"></div>
+</div>
+
+<div id="app">
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
 </html>
