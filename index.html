@@ -29,6 +29,9 @@
     <div id="template-product" x-data="{}">
         <!-- BreadCrumbs Component -->
         <div x-html="await fetch('/src/components/BreadCrumbs.html').then(r => r.text())"></div>
+        <!-- Product Details Component -->
+        <div x-html="await fetch('/src/components/ProductDetails.html').then(r => r.text())"></div>
+
     </div>
 </main>
 

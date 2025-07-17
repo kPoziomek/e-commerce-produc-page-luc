@@ -1,0 +1,162 @@
+<!-- Size Selection Modal -->
+<div x-show="sizeModalOpen"
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="opacity-0 transform translate-x-full"
+     x-transition:enter-end="opacity-100 transform translate-x-0"
+     x-transition:leave="transition ease-in duration-300"
+     x-transition:leave-start="opacity-100 transform translate-x-0"
+     x-transition:leave-end="opacity-0 transform translate-x-full"
+     class="fixed inset-0 z-50 lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[414px] bg-white shadow-xl"
+     x-cloak>
+
+  <!-- Overlay for mobile -->
+  <div class="lg:hidden fixed inset-0 bg-black bg-opacity-25"
+       @click="sizeModalOpen = false"></div>
+  <!-- Modal Content -->
+  <div class="flex flex-col items-center justify-center w-full h-full" >
+  <div class="relative h-full w-full lg:w-[414px] bg-white overflow-y-auto px-3">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-4 border-b border-b-gray-200">
+      <h3 class="text-lg font-light leading-lg">CHOOSE SIZE</h3>
+      <button type="button" @click="sizeModalOpen = false" class="p-2 active:border-gray-100 active:border-0 cursor-pointer">
+      <img src = '/assets/icons/cross.svg' alt="Close Icon" class="h-6 w-6">
+      </button>
+    </div>
+    <div class="mt-6">
+      <div class="relative flex items-center justify-start">
+        <div class="h-12 flex items-center">
+          <span id="size-label">Size</span>
+          <span aria-hidden="true">:</span>
+        </div>
+        <button class="bg-transparent border-none cursor-pointer focus:border-navy focus:shadow-input-focus icon-size-tooltip swatch-tooltip-icon flex items-center justify-center h-12 w-12 ml-2 hover:cursor-pointer" data-product-open-modal="size-info">
+          <img src = '/assets/icons/info.svg' alt="Info Icon" class="h-6 w-6">
+        </button>
+        <div class="absolute flex items-center justify-end right-0">
+          <button class="bg-transparent border-none cursor-pointer focus:border-navy focus:shadow-input-focus flex items-center justify-start uppercase text-primary font-medium text-md leading-md hover:cursor-pointer h-12" data-product-open-modal="fit-guide">
+            <img src="/assets/icons/ruller.svg" alt="Fit Guide Icon" class="h-6 w-6">
+            <span class="ml-2">Fit guide</span>
+          </button>
+          <span class="block w-[1px] h-4 flex-basis-[1px] bg-neutral-400 mx-4"></span>
+          <button class="bg-transparent border-none cursor-pointer focus:border-navy focus:shadow-input-focus flex items-center justify-start uppercase text-primary font-medium text-md leading-md hover:cursor-pointer h-12" data-product-open-modal="size-chart">
+            <img src="/assets/icons/hanger.svg" alt="Chart Icon" class="h-6 w-6">
+            <span class="ml-2">Size chart</span>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center justify-center text-base text-primary w-full h-10 my-2 bg-neutral-100">
+        <img src="/assets/icons/resize.svg" alt="resizeIcon" class="h-6 w-6">
+        <span class="block ml-2">Order a half size up for a wider fit</span>
+      </div>
+<!--   Switch size   -->
+    </div>
+    <!-- Size Options -->
+    <div>
+      <div class="flex gap-2 flex-wrap">
+        <template x-for="(value, index) in fitSize" :key="index">
+          <div class="border w-[59px] h-[56px] p-[10px] flex items-center justify-center relative"
+               :class="{
+                 'border-2 border-primary': selectedSize === value.size,
+                 'cursor-pointer hover:border-primary': value.available,
+                 'bg-gray-100 text-gray-400 cursor-not-allowed': !value.available
+               }"
+               @click="value.available ? selectSize(value.size) : null">
+            <span class="font-medium text-lg" x-text="value.size"></span>
+            <div x-show="!value.available"
+                 class="absolute inset-0 flex items-center justify-center"
+                 style="background-position: 50%; background-repeat: no-repeat; background-size: 100% 100%, auto; height: 100%; left: 0; position: absolute; top: 0; transform: none; width: 100%;">
+              <svg width="100%" height="100%" viewBox="0 0 59 56" class="absolute inset-0">
+                <line x1="0" y1="0" x2="59" y2="56" stroke="#9ca3af" stroke-width="2"/>
+                <line x1="59" y1="0" x2="0" y2="56" stroke="#9ca3af" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="my-6"  aria-labelledby="width-label">
+      <div >
+        <div class="relative flex items-center justify-start">
+          <div class="h-12 flex items-center">
+            <span id="width-label">Width</span>
+            <span aria-hidden="true">:</span>
+          </div>
+          <button class="bg-transparent border-none cursor-pointer focus:border flex items-center justify-center h-12 w-12 ml-2 hover:cursor-pointer" data-product-open-modal="width-info">
+            <img src = '/assets/icons/info.svg' alt="Info Icon" class="h-6 w-6">
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <template x-for="(value, index) in widthSize" :key="index">
+            <div class="border w-[59px] h-[56px] p-[10px] flex items-center justify-center relative"
+                 :class="{
+                 'border-2 border-primary': selectedSize === value.size,
+                 'cursor-pointer hover:border-primary': value.available,
+                 'bg-gray-100 text-gray-400 cursor-not-allowed': !value.available
+               }"
+                 @click="value.available ? selectSize(value.size) : null">
+              <span class="font-medium text-lg" x-text="value.size"></span>
+              <div x-show="!value.available"
+                   class="absolute inset-0 flex items-center justify-center"
+                   style="background-position: 50%; background-repeat: no-repeat; background-size: 100% 100%, auto; height: 100%; left: 0; position: absolute; top: 0; transform: none; width: 100%;">
+                <svg width="100%" height="100%" viewBox="0 0 59 56" class="absolute inset-0">
+                  <line x1="0" y1="0" x2="59" y2="56" stroke="#9ca3af" stroke-width="2"/>
+                  <line x1="59" y1="0" x2="0" y2="56" stroke="#9ca3af" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+    </div>
+    <div class="my-6" aria-labelledby="calf-label">
+      <div class="">
+        <div class="relative flex items-center justify-start">
+          <div class="h-12 flex items-center" >
+            <span id="calf-label">Calf Width</span>
+            <span aria-hidden="true">:</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <template x-for="(value, index) in calfWidth" :key="index">
+            <div class="relative min-w-[57px]">
+              <div class="border  p-[10px] flex items-center justify-center relative"
+                   :class="{
+                 'border-2 border-primary': selectedSize === value.size,
+                 'cursor-pointer hover:border-primary': value.available,
+                 'bg-gray-100 text-gray-400 cursor-not-allowed': !value.available
+               }"
+                   @click="value.available ? selectSize(value.size) : null">
+                <span class="font-medium text-lg" x-text="value.size"></span>
+                <div x-show="!value.available"
+                     class="absolute inset-0 flex items-center justify-center"
+                     style="background-position: 50%; background-repeat: no-repeat; background-size: 100% 100%, auto; height: 100%; left: 0; position: absolute; top: 0; transform: none; width: 100%;">
+                  <svg width="100%" height="100%" viewBox="0 0 59 56" class="absolute inset-0">
+                    <line x1="-36" y1="0" x2="96" y2="56" stroke="#9ca3af" stroke-width="2"/>
+                    <line x1="96" y1="0" x2="-36" y2="56" stroke="#9ca3af" stroke-width="2"/>
+                  </svg>
+                </div>
+              </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- Bottom buttons -->
+  <div class="absolute bottom-0 left-0 right-0 w-full bg-white border-t border-gray-200 p-4">
+    <div class="flex w-full gap-2">
+      <button @click="sizeModalOpen = false" 
+              class="border-solid border border-primary h-14 px-4 bg-white text-primary uppercase text-md font-medium tracking-wide hover:cursor-pointer">
+        Done
+      </button>
+      <button @click="addToCart()" 
+              class="flex-1 h-14 bg-primary text-white uppercase text-md font-medium tracking-wide hover:cursor-pointer">
+        Add To Cart - $1,095
+      </button>
+    </div>
+  </div>
+</div>
+</div>

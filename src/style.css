@@ -45,6 +45,17 @@
     --color-neutrals: #4d4d4d;
     --color-section: #fafafa;
     --color-bacground: #ffffff;
+
+    --text-sm: 12px;
+    --text-md: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+
+
+    --leading-sm: 16px;
+    --leading-md: 18px;
+    --leading-base: 22px;
+    --leading-lg: 24px;
 }
 
 body{
