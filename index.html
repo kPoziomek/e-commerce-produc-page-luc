@@ -9,7 +9,7 @@
 </head>
 <body class="bg-black text-primary font-sans">
 <!-- Header Navigation -->
-<header class="sticky top-0 bg-white shadow-md z-50">
+<header class="sticky top-0 bg-white border-b border-gray-300 z-50">
     <nav class="bg-white mx-auto px-4 sm:px-6 lg:px-8" x-data="headerComponent()">
         <!-- Desktop Layout -->
         <div x-html="await fetch('/src/components/DesktopHeader.html').then(r => r.text())"></div>
@@ -17,13 +17,20 @@
 </header>
 
 <!-- Mobile Layout -->
-<div class="lg:hidden" x-data="mobileNavigationComponent()" x-init="init()">
+<div class="lg:hidden border-b-none" x-data="mobileNavigationComponent()" x-init="init()">
     <!-- Mobile Header -->
     <div x-html="await fetch('/src/components/MobileHeader.html').then(r => r.text())"></div>
 
     <!-- Mobile Navigation Menu -->
     <div x-html="await fetch('/src/components/MobileNavigation.html').then(r => r.text())"></div>
 </div>
+
+<main class="bg-white ">
+    <div id="template-product" x-data="{}">
+        <!-- BreadCrumbs Component -->
+        <div x-html="await fetch('/src/components/BreadCrumbs.html').then(r => r.text())"></div>
+    </div>
+</main>
 
 <div id="app">
 </div>

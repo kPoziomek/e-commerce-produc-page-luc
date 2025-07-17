@@ -46,3 +46,7 @@
     --color-section: #fafafa;
     --color-bacground: #ffffff;
 }
+
+body{
+    font-family: 'Brandon Grotesque', sans-serif;
+}

@@ -1,0 +1,57 @@
+<section class="bg-white h-full w-full px-3 py-2 flex justify-between items-center">
+  <nav aria-label="breadcrumb" class="breadcrumb bg-white">
+    <ul class="flex items-center gap-x-2">
+      <li >
+        <a href="#" class="font-normal leading-5 cursor-pointer">
+          Home
+        </a>
+        </li>
+      <li class="flex gap-2" >
+        <span class="text-gray-300 font-light leading-0 text-[10px] self-center py-0">/</span>
+        All</li>
+      <li class="flex gap-2" >
+        <span class="text-gray-300 font-light leading-0 text-[10px] py-0 self-center">/</span>
+        Priscilla</li>
+    </ul>
+  </nav>
+  <!-- Share dropdown with aria-haspopup -->
+  <div class="relative flex items-center justify-center gap-x-2" x-data="{ isOpen: false }">
+    <button
+      class="flex gap-2 items-center justify-center"
+      aria-haspopup="true"
+      :aria-expanded="isOpen"
+      @mouseenter="isOpen = true"
+      @mouseleave="isOpen = false"
+      @click="isOpen = !isOpen">
+      <img src="/assets/icons/pipe.svg" alt="Pipe Icon" class="h-5 w-5 rounded-full">
+      <span class="text-xs">SHARE</span>
+      <img src="/assets/icons/share.svg" alt="Share Icon" class="h-6 w-6 rounded-full">
+    </button>
+
+    <ul
+      class="absolute top-full right-0 mt-2 bg-white border shadow-lg rounded-md py-2 z-10 "
+      x-show="isOpen"
+      x-transition
+      @mouseenter="isOpen = true"
+      @mouseleave="isOpen = false"
+      role="menu">
+      <li class="flex gap-2 p-2 hover:bg-gray-100" role="menuitem">
+        <img src="/assets/icons/envelope.svg" alt="envelope Icon" class="h-6 w-6 rounded-full text-primary">
+        <a href="#" @click="isOpen = false">
+          <span class="text-sm hover:text-neutral-500">e-mail</span></a>
+      </li>
+      <li class="hidden lg:flex gap-2 p-2 hover:bg-gray-100 min-w-[130px]" role="menuitem">
+        <img src="/assets/icons/copy_link.svg" alt="copy link Icon" class="h-6 w-6 rounded-full text-primary">
+        <button @click="isOpen = false">
+          <span class="text-sm hover:text-neutral-500">copy a link</span>
+        </button>
+      </li>
+      <li class="flex lg:hidden gap-2  p-2 hover:bg-gray-100" role="menuitem">
+        <img src="/assets/icons/sms.svg" alt="sms Icon" class="h-6 w-6 rounded-full text-primary">
+        <a href="#" @click="isOpen = false">
+          <span class="text-sm hover:text-neutral-500">SMS</span>
+          </a>
+      </li>
+    </ul>
+  </div>
+</section>
